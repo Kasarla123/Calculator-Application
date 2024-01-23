@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator | the Code School</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        body{
+            min-height: 100vh;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #0a0a0a, #3a4452);
+        }
+
+        .calculator{
+            padding: 15px;
+            box-shadow: 0 0 15px #000;
+            border: 2px solid rgb(116,114,114);
+            border-radius: 15px;
+        }
+
+        .display input{
+            width: 360px;
+            border: none;
+            outline: none;
+            padding: 20px;
+            margin: 10px;
+            background: transparent;
+            color: #fff;
+            font-size: 40px;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        input::placeholder{
+            color: #fff;
+        }
+
+        button{
+            width: 70px;
+            height: 70px;
+            margin: 10px;
+            background: transparent;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            border: 0;
+            border-radius: 50%;
+            box-shadow: -5px -6px 15px #000;
+            outline: 1px solid #313131;
+            outline-offset: 3px;
+            cursor: pointer;
+        }
+
+        button:active{
+            background: #000;
+            transform: translate(2px, 2px);
+        }
+
+        .opr{
+            color: #fbff00;
+            background: #1e1919;
+            font-weight: 700;
+        }
+
+        #eqBtn{
+            background: orangered;
+            font-weight: 900;
+        }
+        .row.center {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="screen" value="0" placeholder="0" disabled>
+        </div>
+        <div class="row">
+            <button type="button" onclick="demo('AC')" class="opr">AC</button>
+            <button type="button" onclick="demo('DEL')" class="opr">DEL</button>
+            <button type="button" onclick="demo('%')" class="opr">%</button>
+            <button type="button" onclick="demo('/')" class="opr">/</button>
+        </div>
+        <div class="row">
+            <button type="button" onclick="demo('7')">7</button>
+            <button type="button" onclick="demo('8')">8</button>
+            <button type="button" onclick="demo('9')">9</button>
+            <button type="button" onclick="demo('*')" class="opr">*</button>
+        </div>
+        <div class="row">
+            <button type="button" onclick="demo('4')">4</button>
+            <button type="button" onclick="demo('5')">5</button>
+            <button type="button" onclick="demo('6')">6</button>
+            <button type="button" onclick="demo('+')" class="opr">+</button>
+        </div>
+        <div class="row">
+            <button type="button" onclick="demo('1')">1</button>
+            <button type="button" onclick="demo('2')">2</button>
+            <button type="button" onclick="demo('3')">3</button>
+            <button type="button" onclick="demo('-')" class="opr">-</button>
+        </div>
+        <div class="row center">
+            <button type="button" onclick="demo('0')">0</button>
+            <button type="button" onclick="demo('=')" id="eqBtn">=</button>
+        </div>
+    </div>
+
+    <script>
+        function demo(value) {
+            var screen = document.getElementById('screen');
+            if (value === 'AC') {
+                screen.value = '0';
+            } else if (value === 'DEL') {
+                screen.value = screen.value.slice(0, -1);
+            } else if (value === '=') {
+                screen.value = eval(screen.value);
+            } else {
+                screen.value += value;
+            }
+        }
+    </script>
+</body>
+</html>
